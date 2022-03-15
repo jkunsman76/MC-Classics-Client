@@ -14,7 +14,7 @@ function MCClassics () {
          <Container >
            <Card className="App-main-card" style={{ color: "#000" }}>
              <Card.Title style={{ margin: "4px", padding: "4px", color: "#681fa5", bold: true, fontSize: "48px", font: "Roboto " }}>MC Classics</Card.Title>
-             <Card.Text>Music Cities number one classic car forum.</Card.Text>
+             <Card.Text>Music City's number one classic car forum.</Card.Text>
            </Card>
          </Container>
          <Container style={{textAlign: "-webkit-center"}}>
