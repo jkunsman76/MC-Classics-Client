@@ -1,14 +1,10 @@
 import React, { useRef, useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory,useParams } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row, Col, Alert, Breadcrumb, Button, Card, Form, FormGroup } from 'react-bootstrap'
 import { createProject } from "./ProjectsManager"
 
-
-//! need to store photos in state and then use the state as the value to the image key so i can upload multiple images, 
-//!  i also need to look at the imagefield in server. i used pillow, i really dont know to much about this process...
-//! need to figure out why its forcing me to apply gear_head info, back end should do that.
-
+//TODO Need to add functionality for uploading multiple images to a project. 
 
 const initialState = {
     title: "",
@@ -16,22 +12,15 @@ const initialState = {
     model: "",
     year: "",
     details: "",
-    image: "",
-    gear_head: ""
+    image: ""
 };
 
 export const ProjectsForm = () => {
     const history = useHistory()
-    const [user_id] = useState(JSON.parse(localStorage.getItem("token")))
     const [newProject, setNewProject] = useState(initialState)
-    // const [uploadedPhotos, setUploadedPhotos] = useState([])
+    const [uploadedPhotos, setUploadedPhotos] = useState({})
 
     useEffect(() => {}, [newProject])
-
-    // const photoHandler = (e)=> {
-    //     const { id, value } = e.target;
-    //     setUploadedPhotos({ ...uploadedPhotos, [id]: value })
-    // }
 
     const inputHandler = (e) => {
         const { id, value } = e.target;
@@ -49,12 +38,26 @@ export const ProjectsForm = () => {
             model,
             year,
             details,
-            image,
-            gear_head: 1
-
+            image: uploadedPhotos
         }
         createProject(newProjectObj).then(() => history.push("/projects"))
     };
+
+    const getBase64 = (file, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(file);
+    }
+    
+    const createImageString = (event) => {
+        getBase64(event.target.files[0], (base64ImageString) => {
+            console.log("Base64 of file is", base64ImageString);
+         let base64Image = {...uploadedPhotos} 
+         base64Image = base64ImageString
+         setUploadedPhotos(base64Image)
+            // Update a component state variable to the value of base64ImageString
+        });
+    }
 
     const Range = (startYear) => {
         let currentYear = new Date().getFullYear(), years = [];
@@ -112,7 +115,7 @@ export const ProjectsForm = () => {
                     </FormGroup>
                     <FormGroup>
                         <Form.Label>Image</Form.Label>
-                        <Form.Control id="image" type="file" multiple defaultValue={newProject.image} onChange={inputHandler} placeholder="Upload your photos here" />
+                        <Form.Control id="image" type="file" multiple defaultValue={newProject.image} onChange={createImageString} placeholder="Upload your photos here" />
                         <Form.Text className="text-muted">
                             Time to share all the rad stuff your doing or planning on doing at least. Please no nudity, lets keep it classy here.
                         </Form.Text>

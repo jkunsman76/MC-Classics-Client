@@ -12,7 +12,7 @@ export const Footer=() => {
                     Join the best classic car forum in Music City today!
                 </h2>
                 <Button variant="primary" size="large" onClick={() => {
-                                localStorage.removeItem("lu_token")
+                                localStorage.clear()
                                 history.push({ pathname: "/login" })
                             }}>Log Out</Button>
             </Container>

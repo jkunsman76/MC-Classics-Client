@@ -8,13 +8,14 @@ import {Login} from './components/auth/Login'
 import {Register} from './components/auth/Register'
 import {ProjectsForm} from './components/projects/ProjectsForm'
 import {ProjectsList} from './components/projects/ProjectsList'
+import {ProjectsUpdate} from './components/projects/ProjectsUpdate'
 
 function App() {
   return (
     <>
       <Router>
         <Route render={() => {
-          if (localStorage.getItem("lu_token")) {
+          if (localStorage.getItem("mc_token")) {
             return <>
               <NavBar />
               <Switch>
@@ -25,7 +26,7 @@ function App() {
                   <ProjectsList />
                 </Route>
                 <Route exact path="/projects/:currentProject(\d+)/update">
-                  <ProjectsList />
+                  <ProjectsUpdate />
                 </Route>
                 <Route exact path="/projects/new">
                   <ProjectsForm />
