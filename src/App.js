@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
-import NavBar from './components/nav/NavBar';
-import Footer from './components/Footer';
-import './App.css';
-import MCClassics from './components/MCClassics';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Login from './components/auth/Login'
-import Register from './components/auth/Register'
-
-
-
-
-
-
+import './App.css';
+import {NavBar} from './components/nav/NavBar';
+import {Footer} from './components/nav/Footer';
+import {MCClassics} from './components/MCClassics';
+import {Login} from './components/auth/Login'
+import {Register} from './components/auth/Register'
+import {ProjectsForm} from './components/projects/ProjectsForm'
+import {ProjectsList} from './components/projects/ProjectsList'
 
 function App() {
   return (
@@ -20,17 +16,43 @@ function App() {
         <Route render={() => {
           if (localStorage.getItem("lu_token")) {
             return <>
-              <Route>
-                <NavBar />
-                <MCClassics />
-                <Footer />
+              <NavBar />
+              <Switch>
+                <Route exact path="/">
+                  <MCClassics />
+                </Route>
+                <Route exact path="/projects">
+                  <ProjectsList />
+                </Route>
+                <Route exact path="/projects/:currentProject(\d+)/update">
+                  <ProjectsList />
+                </Route>
+                <Route exact path="/projects/new">
+                  <ProjectsForm />
+                </Route>
+                {/* <Route exact path="/events">
+                <Events />
               </Route>
+              <Route exact path="/profile/:currentProfile(\d+)">
+                <Profile />
+              </Route>
+              <Route exact path="/help">
+                <Help />
+              </Route> */}
+              </Switch>
+              <Footer />
             </>
           } else {
             return <>
-              <Route>
-                <Login />
-              </Route>
+              <Switch>
+                <Route exact path="/">
+                  <Login />
+                </Route>
+                <Redirect from="/login" to="/" />
+                <Route path="/register">
+                  <Register />
+                </Route>
+              </Switch>
             </>
           }
         }} />
@@ -40,35 +62,3 @@ function App() {
 };
 export default App
 
-
-
-
-// function App() {
-  // const [token, setToken] = useState();
-
-  // if(!token) {
-  //   return (
-  //     <Route>
-  //   <Login setToken={setToken} />
-  //   </Route>
-
-  //   )
-  // }
-  //   return (
-  //     <>
-  //       <Router>
-  //               <Route>
-  //                 {/* <NavBar /> */}
-  //                 <Switch>
-  //                   <Route path='/' exact component={MCClassics} />
-  //                   <Route path='/api/login' exact component={Login} />
-  //                   <Route path='/api/register' exact component={Register} />
-  //                 </Switch>
-  //                 {/* <Footer /> */}
-  //               </Route>
-  //       </Router>
-  //     </>
-  //   );
-  // }
-
-  // export default App

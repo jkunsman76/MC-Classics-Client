@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function Login () {
+export const Login=() => {
     const username = useRef()
     const password = useRef()
     const invalidDialog = useRef()
@@ -12,7 +12,7 @@ function Login () {
     const handleLogin = (e) => {
         e.preventDefault()
 
-        return fetch("http://localhost:8000/api/login", {
+        return fetch("http://localhost:8000/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -61,9 +61,30 @@ function Login () {
                 </form>
             </section>
             <section className="link--register">
-                <Link to="/api/register">Not a member yet?</Link>
+                <Link to="/register">Not a member yet?</Link>
             </section>
         </main>
     )
 }
-export default Login
+
+
+
+        {/* <Container style={{textAlign: "-webkit-center"}}>
+           <Form style={{ maxWidth: "75%" }}>
+              <Row>
+               <Col md >
+                 <FormGroup controlId="formUsername">
+                   <Form.Label>Username</Form.Label>
+                   <Form.Control type="username" placeholder="Enter your Username" />
+                 </FormGroup>
+               </Col>
+               <Col md>
+                 <FormGroup controlId="formPassword">
+                   <Form.Label>Password</Form.Label>
+                   <Form.Control type="password" placeholder="Enter your Password" />
+                 </FormGroup>
+               </Col>
+             </Row> 
+             <Button variant="secondary" href="/login" style={{ margin: "4px" }}>Login</Button>
+           </Form>
+         </Container>*/}

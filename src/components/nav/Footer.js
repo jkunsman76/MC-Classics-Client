@@ -3,17 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Button } from 'react-bootstrap'
 import { useHistory } from "react-router-dom"
 
-function Footer() {
+export const Footer=() => {
     const history = useHistory()
     return (
-        <div style={{ textAlign: "center", background: "#282c34", color: "#000" }}>
+        <div style={{ textAlign: "center", background: "#282c34", color: "#fff" }}>
             <Container>
                 <h2 >
                     Join the best classic car forum in Music City today!
                 </h2>
                 <Button variant="primary" size="large" onClick={() => {
                                 localStorage.removeItem("lu_token")
-                                history.push({ pathname: "/api/login" })
+                                history.push({ pathname: "/login" })
                             }}>Log Out</Button>
             </Container>
             <Container style={{ display: "flex", justifyContent: 'space-between' }}>
@@ -25,4 +25,3 @@ function Footer() {
         </div>
     );
 }
-export default Footer

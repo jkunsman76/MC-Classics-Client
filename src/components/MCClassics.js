@@ -1,12 +1,8 @@
 import React from "react"
-import { Route, Redirect } from "react-router-dom"
-import { Login } from "./auth/Login"
-import { Register } from "./auth/Register"
-import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row, Col, Alert, Breadcrumb, Button, Card, Form, FormGroup } from 'react-bootstrap'
 
-function MCClassics () {
+export const MCClassics = () => {
     return(
     
      <div className="App">
@@ -17,28 +13,8 @@ function MCClassics () {
              <Card.Text>Music City's number one classic car forum.</Card.Text>
            </Card>
          </Container>
-         <Container style={{textAlign: "-webkit-center"}}>
-           <Form style={{ maxWidth: "75%" }}>
-             {/* <Row>
-               <Col md >
-                 <FormGroup controlId="formUsername">
-                   <Form.Label>Username</Form.Label>
-                   <Form.Control type="username" placeholder="Enter your Username" />
-                 </FormGroup>
-               </Col>
-               <Col md>
-                 <FormGroup controlId="formPassword">
-                   <Form.Label>Password</Form.Label>
-                   <Form.Control type="password" placeholder="Enter your Password" />
-                 </FormGroup>
-               </Col>
-             </Row> 
-             <Button variant="secondary" href="/api/login" style={{ margin: "4px" }}>Login</Button>*/}
-           </Form>
-         </Container>
        </header>
 
      </div>
     )
 }
-export default MCClassics

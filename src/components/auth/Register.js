@@ -2,7 +2,7 @@ import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
 
-function Register() {
+export const Register=()=> {
     const firstName = useRef()
     const lastName = useRef()
     const username = useRef()
@@ -28,7 +28,7 @@ function Register() {
                 "password": password.current.value
             }
 
-            return fetch("http://localhost:8000/api/register", {
+            return fetch("http://localhost:8000/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -97,9 +97,8 @@ function Register() {
                 </fieldset>
             </form>
             <section className="link--register">
-                Already registered? <Link to="/api/login">Login</Link>
+                Already registered? <Link to="/login">Login</Link>
             </section>
         </main>
     )
 }
-export default Register
