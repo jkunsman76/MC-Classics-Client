@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button} from 'react-bootstrap'
 
 
-function NavBar() {
+export const NavBar=() => {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
 
@@ -39,7 +39,7 @@ function NavBar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' >
+                            <Link to='/' className='nav-links' onClick={closeMobileMenu} >
                                 Home
                             </Link>
                         </li>
@@ -58,20 +58,10 @@ function NavBar() {
                                 My Events
                             </Link>
                         </li>
-
-                        <li>
-                            <Link to='/register' className='nav-links-mobile'>
-                                Sign Up
-                            </Link>
-                        </li>
                     </ul>
-
-                           {button && <Button variant='secondary' href='/register' >Sign Up</Button>}
-                    
                 </div>
             </nav>
         </>
     );
 }
 
-export default NavBar;
