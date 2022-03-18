@@ -44,7 +44,7 @@ export const NavBar=() => {
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/profile' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/profiles/currentuser' className='nav-links' onClick={closeMobileMenu}>
                                 My Profile
                             </Link>
                         </li>

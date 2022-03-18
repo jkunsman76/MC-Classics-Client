@@ -117,7 +117,7 @@ export const ProjectsForm = () => {
                         <Form.Label>Image</Form.Label>
                         <Form.Control id="image" type="file" multiple defaultValue={newProject.image} onChange={createImageString} placeholder="Upload your photos here" />
                         <Form.Text className="text-muted">
-                            Time to share all the rad stuff your doing or planning on doing at least. Please no nudity, lets keep it classy here.
+                           Cool photo goes here!
                         </Form.Text>
                     </FormGroup>
                     <Button variant="success" onClick={handleOnSubmit}>Create Project</Button>

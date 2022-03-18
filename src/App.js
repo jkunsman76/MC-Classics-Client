@@ -9,6 +9,7 @@ import {Register} from './components/auth/Register'
 import {ProjectsForm} from './components/projects/ProjectsForm'
 import {ProjectsList} from './components/projects/ProjectsList'
 import {ProjectsUpdate} from './components/projects/ProjectsUpdate'
+import {Profile} from './components/profile/Profile'
 
 function App() {
   return (
@@ -31,11 +32,11 @@ function App() {
                 <Route exact path="/projects/new">
                   <ProjectsForm />
                 </Route>
+                <Route exact path="/profiles/currentuser">
+                  <Profile />
+                </Route>
                 {/* <Route exact path="/events">
                 <Events />
-              </Route>
-              <Route exact path="/profile/:currentProfile(\d+)">
-                <Profile />
               </Route>
               <Route exact path="/help">
                 <Help />
