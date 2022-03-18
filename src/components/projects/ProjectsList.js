@@ -27,7 +27,7 @@ console.log(projectFilter(projects))
                     <h1>Projects</h1>
                 </Row>
 
-                <Button style={{margin:"4px"}} variant="success" size="sm"
+                <Button style={{marginLeft:"18px", marginBottom:"4px"}} variant="success" size="sm"
                     onClick={() => {
                         history.push({ pathname: "/projects/new" })
                     }}
@@ -37,7 +37,7 @@ console.log(projectFilter(projects))
                         return (
                             <Container key={`project--${project.id}`} className="project" >
                                 <Row sm>
-                                    <Badge style={{margin:"2px"}} pill bg="secondary">{project.title}</Badge>
+                                    <Badge style={{margin:"2px"}} pill bg="secondary"><h5>{project.title}</h5></Badge>
                                 </Row>
                                 <Row sm>
                                     <Row xs>Year: {project.year}</Row>
@@ -45,7 +45,7 @@ console.log(projectFilter(projects))
                                     <Row xs>Model: {project.model}</Row>
                                 </Row>
                                 <Row sm>
-                                    <Col xs><Image style={{marginTop:"2px", marginBottom:"4px"}} src={"http://localhost:8000" + project.image} fluid /></Col>
+                                    <Col xs><Image style={{marginTop:"4px", marginBottom:"8px"}} src={"http://localhost:8000" + project.image} fluid /></Col>
                                     <Col xs>{project.details}</Col>
                                 </Row>
                                 <Row>

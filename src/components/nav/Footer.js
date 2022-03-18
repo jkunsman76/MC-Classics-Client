@@ -6,8 +6,8 @@ import { useHistory } from "react-router-dom"
 export const Footer=() => {
     const history = useHistory()
     return (
-        <div style={{ textAlign: "center", background: "#282c34", color: "#fff" }}>
-            <Container>
+        <div style={{textAlign: "center", background: "#282c34", color: "#fff" }}>
+            <Container fluid>
                 <h2 >
                     Join the best classic car forum in Music City today!
                 </h2>
