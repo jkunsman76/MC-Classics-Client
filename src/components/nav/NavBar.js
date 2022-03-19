@@ -39,8 +39,8 @@ export const NavBar=() => {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu} >
-                                Home
+                            <Link to='/help/usersrequests' className='nav-links' onClick={closeMobileMenu} >
+                                My Help Requests
                             </Link>
                         </li>
                         <li className='nav-item'>
@@ -49,12 +49,12 @@ export const NavBar=() => {
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/projects' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/projects/usersprojects' className='nav-links' onClick={closeMobileMenu}>
                                 My Projects
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='/events' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/events/usersevents' className='nav-links' onClick={closeMobileMenu}>
                                 My Events
                             </Link>
                         </li>

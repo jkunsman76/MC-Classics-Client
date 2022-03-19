@@ -14,6 +14,14 @@ export const getSingleProject = (id) => {
     })
     .then(res => res.json())
 }
+export const getUsersProjects  = () => {
+    return fetch(`http://localhost:8000/projects/usersprojects`,{
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("mc_token")}`
+        }
+    })
+        .then(res => res.json())
+}
 
 export const createProject = (project) => {
     return fetch("http://localhost:8000/projects", {        
