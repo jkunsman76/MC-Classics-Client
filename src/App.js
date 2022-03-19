@@ -9,6 +9,7 @@ import {Register} from './components/auth/Register'
 import {ProjectsForm} from './components/projects/ProjectsForm'
 import {ProjectsList} from './components/projects/ProjectsList'
 import {ProjectsUpdate} from './components/projects/ProjectsUpdate'
+import {ProjectsUser} from './components/projects/ProjectsUser'
 import {Profile} from './components/profile/Profile'
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
                 <Route exact path="/projects/:currentProject(\d+)/update">
                   <ProjectsUpdate />
                 </Route>
+                <Route exact path="/projects/usersprojects">
+                  <ProjectsUser />
+                </Route>
                 <Route exact path="/projects/new">
                   <ProjectsForm />
                 </Route>
@@ -36,10 +40,16 @@ function App() {
                   <Profile />
                 </Route>
                 {/* <Route exact path="/events">
-                <Events />
+                <EventsList />
+              </Route>
+              <Route exact path=/events/usersevents>
+              <EventsUser />
+              </Route>
+              <Route exact path=/help/usersrequests>
+              <HelpUser />
               </Route>
               <Route exact path="/help">
-                <Help />
+                <HelpList />
               </Route> */}
               </Switch>
               <Footer />

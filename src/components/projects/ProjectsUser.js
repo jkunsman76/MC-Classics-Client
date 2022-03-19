@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
-import { getProjects, deleteProject } from "./ProjectsManager"
+import { getUsersProjects, deleteProject } from "./ProjectsManager"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row, Col, Alert, Badge, Button, Card, Form, FormGroup, Image } from 'react-bootstrap'
 
-export const ProjectsList = () => {
+export const ProjectsUser = () => {
     const [projects, setProjects] = useState([])
     const history = useHistory()
     const currentUser = parseInt(localStorage.getItem("currentUser"))
    
     useEffect(() => {
-        getProjects().then(data => setProjects(data))
+        getUsersProjects().then(data => setProjects(data))
     }, [])
-
+    console.log(projects)
+    console.log(currentUser)
 
     return (
         <section style={{ background: "#282c34", color: "#fff" }}>
@@ -44,7 +45,10 @@ export const ProjectsList = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Button variant="outline-secondary" color="#fff" size="md" onClick={() => history.push(`/projects/${project.id}`)}>view</Button>
+                                        <Button variant="outline-warning" size="md" onClick={() => history.push(`/projects/${project.id}/update`)}>Edit</Button>
+                                    </Col>
+                                    <Col style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                        <Button style={{margin:"4px"}} variant="outline-danger" size="md" onClick={() => deleteProject(project.id).then(getUsersProjects)}>Delete</Button>
                                     </Col>
                                 </Row>
                             </Container>
