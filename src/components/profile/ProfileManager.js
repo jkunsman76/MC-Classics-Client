@@ -16,7 +16,6 @@ export const getCurrentProfile = () => {
         .then(res => res.json())
 }
 
-
 export const updateProfile = (profile) => {
     return fetch(`http://localhost:8000/profiles/${profile.id}`, {        
         method: "PUT",

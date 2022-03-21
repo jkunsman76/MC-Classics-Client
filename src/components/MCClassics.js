@@ -54,7 +54,7 @@ export const MCClassics = () => {
                         <Card.Text>
                         {project.details}
                         </Card.Text>
-                        <Button variant="dark" size="small" onClick={() =>{ history.push({ pathname: `/project/${project.id}` })}}>View</Button>
+                        <Button variant="dark" size="small" onClick={() =>{ history.push({ pathname: `/projects/${project.id}` })}}>View</Button>
                       </Card>
                     </Stack>
                   </Row>

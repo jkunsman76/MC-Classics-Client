@@ -39,7 +39,7 @@ export const ProjectsUpdate = () => {
     const handleOnSubmit = (e) => {
         e.preventDefault();
 
-        const { title, make, model, year, details, image } = newProject
+        const { title, make, model, year, details} = newProject
 
         const newProjectObj = {
             id:parseInt(projectId.currentProject),
