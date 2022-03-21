@@ -6,73 +6,46 @@ import { Container, Row, Col, Badge, Button, Form, FormGroup, Image, Stack } fro
 import { getAllHelpRequests } from '../help/HelpManager'
 import { getEvents } from '../events/EventsManager'
 
-
-//TODO need to finish update functionality for profile information 
-//TODO need to get the django user user info to update in state
-//TODO cant use optional chaining to update the profile
-//! i give up
-
-const initialState = {
-username:"",
-first_name:"",
-last_name:"",
-email:"",
-bio:"",
-profile_img :""
-}
-
 export const Profile = () => {
     const history = useHistory()
-    const [profile, setProfile] = useState(initialState)
     const currentUser = parseInt(localStorage.getItem("currentUser"))
     const [helpRequests, setHelpRequests] = useState([])
     const [events, setEvents] = useState([])
     const [formStatus, setFormStatus] = useState()
     const [userObj, setUser] = useState({})
+    const [profile, setProfile] = useState([])
     
     useEffect(() => {
         getCurrentProfile()
-            .then(data => setProfile(data))
+        .then(data => setProfile(data))
         getAllHelpRequests()
         .then(data => setHelpRequests(data))
         getEvents()
         .then(data => setEvents(data))
         setFormStatus(true)
     }, [])
-    useEffect(() => {
-      setUser(findObj())
-    },[profile])
 
-    const findObj = () => {
-        const profileArray = {...profile}
-        const n = Object.values(profileArray)
-        const result = n.find((value,index)=>{if(index === 3){return n[3]}})
-        return result
-    }
-    
-console.log(userObj)
-const inputHandler = (e) => {
-    // Target = id of JSX and value = defaultValue
-    const { id, value } = e.target;
-
-    setProfile({ ...profile, [id]: value })
+    const inputHandler = (e) => {
+        // Target = id of JSX and value = value
+        const { id, value } = e.target;
+    setUser({ ...profile, [id]: value})
 };
 
 const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    const { username, first_name, last_name, email, profile_img, bio } = profile
+    const { username, first_name, last_name, email, profile_img, bio } = userObj
 
     const ProfileObj = {
         id:currentUser,
-        username,
-        first_name,
-        last_name,
-        email,
-        bio,
-        profile_img  
+        username: `${username ? username : profile.user?.username}`,
+        first_name: `${first_name ? first_name : profile.user?.first_name}`,
+        last_name: `${last_name ? last_name : profile.user?.last_name}`,
+        email: `${email ? email : profile.user?.email}`,
+        bio: `${bio ? bio : profile.bio}`,
+        profile_img: `${profile_img ? profile_img : profile.profile_img}` 
     }
-    console.log(ProfileObj)
+  
     updateProfile(ProfileObj).then(getCurrentProfile().then(setFormStatus(true)))
 };
 
@@ -125,21 +98,21 @@ const handleOnSubmit = (e) => {
                                             <FormGroup>
                                                 <Form.Label>Joined On: {profile.user?.date_joined.slice(0, 10)} {deleteButton()}</Form.Label>
                                             </FormGroup>
+                                            <Form.Label>Username:</Form.Label>
+                                            <Form.Control disabled={formStatus} id="username" type="text" defaultValue={profile.user?.username}  onChange={inputHandler} />
                                             <Form.Label>First Name:</Form.Label>
-                                            <Form.Control disabled={formStatus} id="username" type="text" defaultValue={profile.user?.username} onChange={inputHandler} required placeholder="" />
-                                            <Form.Label>First Name:</Form.Label>
-                                            <Form.Control disabled={formStatus} id="first_name" type="text" defaultValue={profile.user?.first_name} onChange={inputHandler} required placeholder="" />
+                                            <Form.Control disabled={formStatus} id="first_name" type="text" defaultValue={profile.user?.first_name} onChange={inputHandler} />
                                             <Form.Label>Last Name:</Form.Label>
-                                            <Form.Control disabled={formStatus} id="last_name" type="text" defaultValue={profile.user?.last_name} onChange={inputHandler} required placeholder="" />
+                                            <Form.Control disabled={formStatus} id="last_name" type="text" defaultValue={profile.user?.last_name} onChange={inputHandler} />
                                         </Stack>
                                     </FormGroup>
                                     <FormGroup>
                                         <Form.Label>Email Address:</Form.Label>
-                                        <Form.Control disabled={formStatus} id="email" type="email" defaultValue={profile.user?.email} onChange={inputHandler} required placeholder="" />
+                                        <Form.Control disabled={formStatus} id="email" type="email" defaultValue={profile.user?.email} onChange={inputHandler} />
                                     </FormGroup>
                                     <FormGroup>
                                         <Form.Label>Bio:</Form.Label>
-                                        <Form.Control disabled={formStatus} id="bio" type="text" defaultValue={profile.bio} onChange={inputHandler} required placeholder="" />
+                                        <Form.Control disabled={formStatus} id="bio" type="text" defaultValue={profile.bio} onChange={inputHandler} />
                                     </FormGroup>
                                     <FormGroup>
                                         <Form.Label>Profile Picture</Form.Label>
