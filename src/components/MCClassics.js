@@ -44,7 +44,7 @@ export const MCClassics = () => {
           <Col sm={{ order: 0 }} md={{ span: 6, order: 1 }} lg={{ span: 6 }} style={{ textAlign: 'center', padding: "0px" }}>
             <Container fluid style={{ paddingLeft: "20px", paddingRight: "20px", textAlign: 'center' }}>
               <Button variant="secondary" size="sm" onClick={() => { history.push({ pathname: `/projects` }) }} style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }}>All Projects</Button>
-              {shuffleArray(projects).slice(0,8).map(project => {
+              {shuffleArray(projects).slice(0,5).map(project => {
                 return (
                   <Row sm key={`project--${project.id}`} className="project">
                     <Stack gap="2" style={{ padding: "0px" }}>
@@ -54,7 +54,7 @@ export const MCClassics = () => {
                         <Card.Text>
                         {project.details}
                         </Card.Text>
-                        <Button variant="dark" size="small" onClick={() =>{ history.push({ pathname: `/project/${project.id}` })}}>View</Button>
+                        <Button variant="dark" size="small" onClick={() =>{ history.push({ pathname: `/projects/${project.id}` })}}>View</Button>
                       </Card>
                     </Stack>
                   </Row>

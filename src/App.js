@@ -10,7 +10,14 @@ import {ProjectsForm} from './components/projects/ProjectsForm'
 import {ProjectsList} from './components/projects/ProjectsList'
 import {ProjectsUpdate} from './components/projects/ProjectsUpdate'
 import {ProjectsUser} from './components/projects/ProjectsUser'
+import {ProjectView} from './components/projects/ProjectView'
 import {Profile} from './components/profile/Profile'
+import {EventsList} from './components/events/EventsList'
+import {EventForm} from './components/events/EventForm'
+import {EventDetails} from './components/events/EventDetails'
+import {EventsUser} from './components/events/EventsUser'
+import {EventUpdate} from './components/events/UpdateEvent'
+
 
 function App() {
   return (
@@ -30,6 +37,9 @@ function App() {
                 <Route exact path="/projects/:currentProject(\d+)/update">
                   <ProjectsUpdate />
                 </Route>
+                <Route exact path="/projects/:currentProject(\d+)">
+                  <ProjectView />
+                </Route>
                 <Route exact path="/projects/usersprojects">
                   <ProjectsUser />
                 </Route>
@@ -39,13 +49,22 @@ function App() {
                 <Route exact path="/profiles/currentuser">
                   <Profile />
                 </Route>
-                {/* <Route exact path="/events">
+                <Route exact path="/events">
                 <EventsList />
-              </Route>
-              <Route exact path=/events/usersevents>
-              <EventsUser />
-              </Route>
-              <Route exact path=/help/usersrequests>
+                </Route>
+                <Route exact path="/events/new">
+                <EventForm />
+                </Route>
+                <Route exact path="/events/:currentEvent(\d+)">
+                <EventDetails />
+                </Route>
+                <Route exact path="/events/:currentEvent(\d+)/update">
+                <EventUpdate />
+                </Route>
+                <Route exact path='/events/usersevents'>
+                <EventsUser />
+                </Route>
+             {/*  <Route exact path=/help/usersrequests>
               <HelpUser />
               </Route>
               <Route exact path="/help">
