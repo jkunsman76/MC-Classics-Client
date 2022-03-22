@@ -16,7 +16,7 @@ export const EventsUser = () => {
       }, [])
 
 
-
+console.log(events)
 
     return (
         <>
@@ -26,7 +26,6 @@ export const EventsUser = () => {
                             return ( 
                     <Row sm key={`event--${event.id}`} className="event">
                             <Stack gap="2" style={{ padding: "0px" }}>
-                            {console.log(event.id)}
                                 <Button style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} size="sm" variant="dark" onClick={() => history.push(`/events/${event.id}`)}><p style={{ marginBottom: "0px" }}>{event.type} </p></Button>
                             </Stack>
                         </Row>

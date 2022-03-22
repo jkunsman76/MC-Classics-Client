@@ -15,6 +15,7 @@ export const EventDetails = () => {
         getSingleEvent(currentEvent).then(data => { setEvent(data) })
     }, [])
 
+    
     console.log(event)
 const buttonLogic = () => { 
     if(event.creator?.id === currentUser){ 
@@ -30,24 +31,23 @@ const buttonLogic = () => {
 }
 
 
-
     return (
         <>
             <Container>
                 <Form>
                     <FormGroup >
                         <Form.Label>Type Of Event</Form.Label>
-                        <Form.Control disabled id="type" type="text" defaultValue={event.type} />
+                        <Form.Control readOnly id="type" type="text" defaultValue={event.type} />
 
                     </FormGroup>
                     <FormGroup>
                         <Form.Label>Description</Form.Label>
-                        <Form.Control disabled id="description" type="text" defaultValue={event.description} />
+                        <Form.Control readOnly id="description" type="text" defaultValue={event.description} />
 
                     </FormGroup>
                     <FormGroup>
                         <Form.Label>Date and time</Form.Label>
-                        <Form.Control disabled id="description" type="text" defaultValue={event.date} />
+                        <Form.Control readOnly id="description" type="text" defaultValue={event.date} />
                     </FormGroup>
                    {buttonLogic()}
                 </Form>

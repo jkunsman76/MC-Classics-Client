@@ -40,7 +40,7 @@ export const EventUpdate = () => {
     };
     console.log(event)
     console.log(eventDate)
-    console.log(eventUpdate)
+    console.log(event.date)
     return (
         <>
             <Container>
