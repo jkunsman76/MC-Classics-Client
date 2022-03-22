@@ -34,6 +34,7 @@ export const ProjectsList = () => {
                                     <Badge style={{margin:"2px"}} pill bg="secondary"><h5>{project.title}</h5></Badge>
                                 </Row>
                                 <Row sm>
+                                    <Row xs>Owner: {project.gear_head?.user?.first_name} {project.gear_head?.user?.last_name}</Row>
                                     <Row xs>Year: {project.year}</Row>
                                     <Row xs>Make: {project.make}</Row>
                                     <Row xs>Model: {project.model}</Row>

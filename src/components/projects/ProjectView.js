@@ -46,7 +46,7 @@ export const ProjectView = () => {
     }
 
     const projectComments = comments.filter(comment => comment.project.id === parseInt(currentProject))
-
+console.log(project)
     return (
         <section style={{ background: "#282c34", color: "#fff" }}>
             <Container className="projects">
@@ -58,6 +58,7 @@ export const ProjectView = () => {
                         <Badge style={{ margin: "2px" }} pill bg="secondary"><h5>{project.title}</h5></Badge>
                     </Row>
                     <Row sm>
+                        <Row xs>Owner: {project.gear_head?.user?.first_name} {project.gear_head?.user?.last_name}</Row>
                         <Row xs>Year: {project.year}</Row>
                         <Row xs>Make: {project.make}</Row>
                         <Row xs>Model: {project.model}</Row>

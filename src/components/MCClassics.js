@@ -43,11 +43,12 @@ export const MCClassics = () => {
         <Row>
           <Col sm={{ order: 0 }} md={{ span: 6, order: 1 }} lg={{ span: 6 }} style={{ textAlign: 'center', padding: "0px" }}>
             <Container fluid style={{ paddingLeft: "20px", paddingRight: "20px", textAlign: 'center' }}>
-              <Button variant="secondary" size="sm" onClick={() => { history.push({ pathname: `/projects` }) }} style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }}>All Projects</Button>
+              <Button variant="secondary" size="sm" onClick={() => { history.push({ pathname: `/projects` }) }} style={{ padding: "10px,5px", margin: "4px", textAlign: "center"}}>All Projects</Button>
               {shuffleArray(projects).slice(0,5).map(project => {
                 return (
+                  <Container >
                   <Row sm key={`project--${project.id}`} className="project">
-                    <Stack gap="2" style={{ padding: "0px" }}>
+                    {/* <Stack gap="2" style={{ padding: "0px" }}> */}
                       <Card style={{ padding: "10px,5px", margin: "4px",backgroundColor: "#6c757d"}}>
                         <Card.Img variant="top" src={"http://localhost:8000" + project.image} />
                         <Card.Title>{project.title}</Card.Title>
@@ -56,10 +57,11 @@ export const MCClassics = () => {
                         </Card.Text>
                         <Button variant="dark" size="small" onClick={() =>{ history.push({ pathname: `/projects/${project.id}` })}}>View</Button>
                       </Card>
-                    </Stack>
-                  </Row>
-                )
-              })}
+                    {/* </Stack> */}
+                    </Row>
+                    </Container>
+                    )
+                  })}
             </Container>
           </Col>
           <Col sm={{ order: 1 }} md={{ span: 3, order: 0 }} lg={{ span: 3 }} style={{ textAlign: 'center', padding: "0px", background: "#191b20",borderRadius:".5rem" }} >

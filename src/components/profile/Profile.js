@@ -43,19 +43,19 @@ const handleOnSubmit = (e) => {
         last_name: `${last_name ? last_name : profile.user?.last_name}`,
         email: `${email ? email : profile.user?.email}`,
         bio: `${bio ? bio : profile.bio}`,
-        profile_img: `${profile_img ? profile_img : profile.profile_img}` 
+        // profile_img: `${profile_img ? profile_img : profile.profile_img}` 
     }
   
     updateProfile(ProfileObj).then(getCurrentProfile().then(setFormStatus(true)))
 };
 
     const eventFilter = (array) => {
-        const filteredEvents = array.filter(event => event.creator?.id === currentUser)
+        const filteredEvents = array.filter(event => event.creator?.user === currentUser)
         return filteredEvents
     }
 
     const helpRequestFilter = (array) => {
-        const filteredHelpRequests = array.filter(helpRequest => helpRequest.author?.id === currentUser)
+        const filteredHelpRequests = array.filter(helpRequest => helpRequest.author?.user === currentUser)
         return filteredHelpRequests
     }
 
@@ -81,7 +81,7 @@ const handleOnSubmit = (e) => {
         }
         return btn
     }
-
+console.log(profile)
     return (
         <>
             <Container fluid style={{ paddingTop: "10px", background: "#282c34", color: "#fff" }}>
@@ -114,13 +114,13 @@ const handleOnSubmit = (e) => {
                                         <Form.Label>Bio:</Form.Label>
                                         <Form.Control disabled={formStatus} id="bio" type="text" defaultValue={profile.bio} onChange={inputHandler} />
                                     </FormGroup>
-                                    <FormGroup>
+                                    {/* <FormGroup>
                                         <Form.Label>Profile Picture</Form.Label>
                                         <Form.Control disabled={formStatus} id="img" type="file" size="sm" multiple defaultValue={""} />
-                                    </FormGroup>
+                                    </FormGroup> */}
                                 </Stack>
                             </Form>
-                            <Image thumbnail src={profile.profile_img} />
+                            {/* <Image thumbnail src={"http://localhost:8000"+profile.profile_img} /> */}
                             <Row>
                                 <Button variant="outline-warning" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => { enableFormEdit() }}>{formStatus ? 'Edit Profile ' : 'Cancel Edit'}</Button>
                                {updateButton()}

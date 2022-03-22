@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef,useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
 
@@ -7,12 +7,13 @@ export const Register=()=> {
     const lastName = useRef()
     const username = useRef()
     const email = useRef()
-    const profile_img = useRef()
+    // const profile_img = useRef()
     const bio = useRef()
     const password = useRef()
     const verifyPassword = useRef()
     const passwordDialog = useRef()
     const history = useHistory()
+    const [uploadedPhotos, setUploadedPhotos] = useState({})
 
     const handleRegister = (e) => {
         e.preventDefault()
@@ -23,7 +24,7 @@ export const Register=()=> {
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
                 "email": email.current.value,
-                "profile_img": profile_img.current.value,
+                // "profile_img": uploadedPhotos,
                 "bio": bio.current.value,
                 "password": password.current.value
             }
@@ -48,6 +49,21 @@ export const Register=()=> {
             passwordDialog.current.showModal()
         }
     }
+    // const getBase64 = (file, callback) => {
+    //     const reader = new FileReader();
+    //     reader.addEventListener('load', () => callback(reader.result));
+    //     reader.readAsDataURL(file);
+    // }
+    
+    // const createImageString = (event) => {
+    //     getBase64(event.target.files[0], (base64ImageString) => {
+    //         console.log("Base64 of file is", base64ImageString);
+    //      let base64Image = {...uploadedPhotos} 
+    //      base64Image = base64ImageString
+    //      setUploadedPhotos(base64Image)
+    //         // Update a component state variable to the value of base64ImageString
+    //     });
+    // }
 
     return (
         <main style={{ textAlign: "center" }}>
@@ -87,10 +103,10 @@ export const Register=()=> {
                     <label htmlFor="bio"> Bio </label>
                     <textarea ref={bio} name="bio" className="form-control" placeholder="Let others know a little bit about you..." />
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor="profileImg"> Profile Picture </label>
-                    <textarea ref={profile_img} name="profile_img" className="form-control" placeholder="Upload a profile picture" />
-                </fieldset>
+                    <input type="file" name="profile_img"  className="form-control" onChange={createImageString} placeholder="Upload a profile picture" />
+                </fieldset> */}
                 <fieldset style={{
                     textAlign: "center"
                 }}>
