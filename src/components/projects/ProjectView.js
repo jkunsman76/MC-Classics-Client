@@ -30,15 +30,15 @@ export const ProjectView = () => {
         const { id, value } = e.target;
         setNewComment({ ...newComment, [id]: value })
     }
-    const postSubmit =  (e) => {
+    const postSubmit = (e) => {
         e.preventDefault();
 
         const { content, author, project } = newComment
 
         const newCommentObj = {
-          content,
-          author: currentUser,
-          project: parseInt(currentProject)
+            content,
+            author: currentUser,
+            project: parseInt(currentProject)
         }
 
 
@@ -46,7 +46,7 @@ export const ProjectView = () => {
     }
 
     const projectComments = comments.filter(comment => comment.project.id === parseInt(currentProject))
-console.log(project)
+    console.log(project)
     return (
         <section style={{ background: "#282c34", color: "#fff" }}>
             <Container className="projects">
@@ -76,9 +76,9 @@ console.log(project)
                                 <Row sm key={`comment--${comment.id}`} className="comment">
                                     <Stack gap="2" style={{ padding: "0px" }}>
                                         {comment.author.user?.username}: {comment.content}
-                                            <Col style={{ display: 'flex',margin: "6px", justifyContent: 'flex-end' }}>
-                                               {parseInt(currentUser)===comment.author?.id ? <Button variant="outline-danger" size="small" onClick={() => deleteComment(comment.id).then(getAll)}>Remove</Button> : <div></div>}
-                                            </Col>
+                                        <Col style={{ display: 'flex', margin: "6px", justifyContent: 'flex-end' }}>
+                                            {parseInt(currentUser) === comment.author?.id ? <Button variant="outline-danger" size="small" onClick={() => deleteComment(comment.id).then(getAll)}>Remove</Button> : <div></div>}
+                                        </Col>
                                     </Stack>
                                 </Row>
                             )

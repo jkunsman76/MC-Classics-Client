@@ -1,6 +1,6 @@
 export const getComments = () => {
     return fetch("http://localhost:8000/comments", {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("mc_token")}`
         }
     })
@@ -8,17 +8,17 @@ export const getComments = () => {
 }
 
 export const getSingleComment = (id) => {
-    return  fetch(`http://localhost:8000/comments/${id}`, {
-        headers:{
+    return fetch(`http://localhost:8000/comments/${id}`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("mc_token")}`
         }
     })
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
-export const getUsersComments  = () => {
-    return fetch(`http://localhost:8000/comments/userscomments`,{
-        headers:{
+export const getUsersComments = () => {
+    return fetch(`http://localhost:8000/comments/userscomments`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("mc_token")}`
         }
     })
@@ -26,33 +26,33 @@ export const getUsersComments  = () => {
 }
 
 export const createComment = (comment) => {
-    return fetch("http://localhost:8000/comments", {        
+    return fetch("http://localhost:8000/comments", {
         method: "POST",
-        headers:{
-        "Authorization": `Token ${localStorage.getItem("mc_token")}`,
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(comment)
-})      
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("mc_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(comment)
+    })
 }
 
 export const updateComment = (comment) => {
-    return fetch(`http://localhost:8000/comments/${comment.id}`, {        
+    return fetch(`http://localhost:8000/comments/${comment.id}`, {
         method: "PUT",
-        headers:{
-        "Authorization": `Token ${localStorage.getItem("mc_token")}`,
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(comment)
-})       
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("mc_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(comment)
+    })
 }
 
 export const deleteComment = (comment_id) => {
-    return fetch(`http://localhost:8000/comments/${comment_id}`, {        
+    return fetch(`http://localhost:8000/comments/${comment_id}`, {
         method: "Delete",
-        headers:{
-        "Authorization": `Token ${localStorage.getItem("mc_token")}`,
-        "Content-Type": "application/json"
-    },
-})    
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("mc_token")}`,
+            "Content-Type": "application/json"
+        },
+    })
 }

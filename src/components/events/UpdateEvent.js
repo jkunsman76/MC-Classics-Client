@@ -16,7 +16,7 @@ export const EventUpdate = () => {
     const [eventDate, setEventDate] = useState(new Date());
     useEffect(() => {
         getSingleEvent(currentEvent).then(data => { setEvent(data) })
-     }, [])
+    }, [])
 
 
     const inputHandler = (e) => {
@@ -27,22 +27,23 @@ export const EventUpdate = () => {
     const handleOnSubmit = (e) => {
         e.preventDefault();
 
-        const { date, description,type } = eventUpdate
+        const { date, description, type } = eventUpdate
 
         const EventObj = {
             id: currentEvent,
             date: eventDate,
-            description:`${description ? description : event.description}`,
-            type:`${type ? type : event.type}`
+            description: `${description ? description : event.description}`,
+            type: `${type ? type : event.type}`
         }
-        
-       updateEvent(EventObj).then(() => history.push("/events"))
+
+        updateEvent(EventObj).then(() => history.push("/events"))
     };
     console.log(event)
     console.log(eventDate)
     console.log(event.date)
     return (
         <>
+            <section style={{ background: "#282c34", color: "#fff" }}>
             <Container>
                 <Form>
                     <FormGroup >
@@ -60,7 +61,7 @@ export const EventUpdate = () => {
                         </Form.Text>
                     </FormGroup>
                     <FormGroup>
-                        <DatePicker 
+                        <DatePicker
                             selected={eventDate}
                             defaultValue={event.date}
                             onChange={(date) => setEventDate(date)}
@@ -74,13 +75,14 @@ export const EventUpdate = () => {
                             timeIntervals={20}
                             timeCaption="time"
                         />
-                             <Form.Text className="text-muted">
+                        <Form.Text className="text-muted">
                             Select the Date and Time of the event
                         </Form.Text>
                     </FormGroup>
                     <Button variant="success" onClick={handleOnSubmit}>Update Event</Button>
                 </Form>
             </Container>
+        </section>
         </>
     )
 }

@@ -1,23 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
-import {NavBar} from './components/nav/NavBar';
-import {Footer} from './components/nav/Footer';
-import {MCClassics} from './components/MCClassics';
-import {Login} from './components/auth/Login'
-import {Register} from './components/auth/Register'
-import {ProjectsForm} from './components/projects/ProjectsForm'
-import {ProjectsList} from './components/projects/ProjectsList'
-import {ProjectsUpdate} from './components/projects/ProjectsUpdate'
-import {ProjectsUser} from './components/projects/ProjectsUser'
-import {ProjectView} from './components/projects/ProjectView'
-import {Profile} from './components/profile/Profile'
-import {EventsList} from './components/events/EventsList'
-import {EventForm} from './components/events/EventForm'
-import {EventDetails} from './components/events/EventDetails'
-import {EventsUser} from './components/events/EventsUser'
-import {EventUpdate} from './components/events/UpdateEvent'
-
+import { NavBar } from './components/nav/NavBar';
+import { Footer } from './components/nav/Footer';
+import { MCClassics } from './components/MCClassics';
+import { Login } from './components/auth/Login'
+import { Register } from './components/auth/Register'
+import { ProjectsForm } from './components/projects/ProjectsForm'
+import { ProjectsList } from './components/projects/ProjectsList'
+import { ProjectsUpdate } from './components/projects/ProjectsUpdate'
+import { ProjectsUser } from './components/projects/ProjectsUser'
+import { ProjectView } from './components/projects/ProjectView'
+import { Profile } from './components/profile/Profile'
+import { EventsList } from './components/events/EventsList'
+import { EventForm } from './components/events/EventForm'
+import { EventDetails } from './components/events/EventDetails'
+import { EventsUser } from './components/events/EventsUser'
+import { EventUpdate } from './components/events/UpdateEvent'
+import { HelpRequestsList } from './components/help/HelpList'
+import { HelpDetails } from './components/help/HelpDetails'
 
 function App() {
   return (
@@ -50,26 +51,29 @@ function App() {
                   <Profile />
                 </Route>
                 <Route exact path="/events">
-                <EventsList />
+                  <EventsList />
                 </Route>
                 <Route exact path="/events/new">
-                <EventForm />
+                  <EventForm />
                 </Route>
                 <Route exact path="/events/:currentEvent(\d+)">
-                <EventDetails />
+                  <EventDetails />
                 </Route>
                 <Route exact path="/events/:currentEvent(\d+)/update">
-                <EventUpdate />
+                  <EventUpdate />
                 </Route>
                 <Route exact path='/events/usersevents'>
-                <EventsUser />
+                  <EventsUser />
                 </Route>
-             {/*  <Route exact path=/help/usersrequests>
+                {/*  <Route exact path=/help/usersrequests>
               <HelpUser />
-              </Route>
-              <Route exact path="/help">
-                <HelpList />
-              </Route> */}
+          </Route>*/}
+                <Route exact path="/help">
+                  <HelpRequestsList />
+                </Route>
+                <Route exact path="/help/:currentHelp(\d+)">
+                  <HelpDetails />
+                </Route>
               </Switch>
               <Footer />
             </>
