@@ -19,6 +19,8 @@ import { EventsUser } from './components/events/EventsUser'
 import { EventUpdate } from './components/events/UpdateEvent'
 import { HelpRequestsList } from './components/help/HelpList'
 import { HelpDetails } from './components/help/HelpDetails'
+import { HelpForm } from './components/help/HelpForm'
+import { HelpUpdate } from './components/help/HelpUpdate'
 
 function App() {
   return (
@@ -65,13 +67,16 @@ function App() {
                 <Route exact path='/events/usersevents'>
                   <EventsUser />
                 </Route>
-                {/*  <Route exact path=/help/usersrequests>
-              <HelpUser />
-          </Route>*/}
+                 <Route exact path='/help/:currentRequest(\d+)/update'>
+                  <HelpUpdate />
+                 </Route>
                 <Route exact path="/help">
                   <HelpRequestsList />
                 </Route>
-                <Route exact path="/help/:currentHelp(\d+)">
+                <Route exact path="/help/new">
+                  <HelpForm />
+                </Route>
+                <Route exact path="/help/:currentRequest(\d+)">
                   <HelpDetails />
                 </Route>
               </Switch>
@@ -79,19 +84,19 @@ function App() {
             </>
           } else {
             return <>
-              <Switch>
-                <Route exact path="/">
-                  <Login />
-                </Route>
-                <Redirect from="/login" to="/" />
-                <Route path="/register">
-                  <Register />
-                </Route>
-              </Switch>
-            </>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Redirect from="/login" to="/" />
+          <Route path="/register">
+            <Register />
+          </Route>
+        </Switch>
+      </>
           }
         }} />
-      </Router>
+    </Router>
     </>
   );
 };

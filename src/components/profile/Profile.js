@@ -68,7 +68,10 @@ export const Profile = () => {
     const updateButton = () => {
         let btn = null
         if (!formStatus) {
-            return btn = <Button variant="outline-success" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={handleOnSubmit}>Update Profile</Button>
+            return btn = <Button variant="outline-success" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }}
+             onClick={handleOnSubmit}>
+                 Update Profile
+                 </Button>
         }
         return btn
     }
@@ -76,7 +79,10 @@ export const Profile = () => {
     const deleteButton = () => {
         let btn = null
         if (!formStatus) {
-            return btn = <Button variant="danger" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => deleteProfile(profile.id).then(history.push('/'))}>Delete Profile</Button>
+            return btn = <Button variant="danger" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }}
+             onClick={() => deleteProfile(profile.id).then( localStorage.clear()).then(history.push('/login'))}>
+                 Delete Profile
+                 </Button>
         }
         return btn
     }
@@ -140,7 +146,7 @@ export const Profile = () => {
                         </Col>
                         <Col sm={{ order: 2 }} md={{ span: 3, order: 2 }} lg={{ span: 3 }} style={{ padding: "0px", textAlign: 'center' }}>
                             <Container fluid style={{ paddingLeft: "20px", paddingRight: "20px", textAlign: 'center' }}>
-                                <Button variant="secondary" size="sm" onClick={() => { history.push({ pathname: `/events` }) }} style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }}>My Events</Button>
+                                <Button variant="secondary" size="sm" onClick={() => { history.push({ pathname: `/events/usersevents` }) }} style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }}>My Events</Button>
                                 {eventFilter(events).map(event => {
                                     return (
 

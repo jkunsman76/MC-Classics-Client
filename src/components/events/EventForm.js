@@ -74,7 +74,7 @@ export const EventForm = () => {
                                 Select the Date and Time of the event
                             </Form.Text>
                         </FormGroup>
-                        <Button variant="success" onClick={handleOnSubmit}>Create Event</Button>
+                        <Button variant="outline-success" onClick={handleOnSubmit}>Create Event</Button>
                     </Form>
                 </Container>
             </section>

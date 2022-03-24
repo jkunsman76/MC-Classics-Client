@@ -29,13 +29,13 @@ console.log(helpRequests)
                                 <h2>Create Help Request</h2>
                             </Button>
                         </Row>
-                        {helpRequests.map(request => {
+                        {helpRequests.reverse().map(request => {
                             return (
                                 <Row style={{ justifyContent: 'center' }}>
                                     <Card style={{ padding: "10px,5px", margin: "4px", backgroundColor: "#6c757d", width: "25rem" }}>
                                         <Card.Header style={{marginTop:'5px', background: "#282c34",borderRadius: ".5rem" }}>Send Help!</Card.Header>
                                         <Card.Subtitle  style={{padding: "10px", alignSelf: "flex-start", color: 'black'}}>{request.author?.user?.username}'s Request:</Card.Subtitle>
-                                        <Card.Body>
+                                        <Card.Body> {console.log(request.id)}
                                             <Card.Text style={{color:'black'}}>
                                             {request.content}
                                             </Card.Text>

@@ -121,7 +121,7 @@ export const ProjectsForm = () => {
                                 Cool photo goes here!
                             </Form.Text>
                         </FormGroup>
-                        <Button variant="success" onClick={handleOnSubmit}>Create Project</Button>
+                        <Button variant="outline-success" onClick={handleOnSubmit}>Create Project</Button>
                     </Form>
                 </Container>
             </section>

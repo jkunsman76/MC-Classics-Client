@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react"
 import { useHistory, useParams } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row, Col, Alert, Breadcrumb, Button, Card, Form, FormGroup } from 'react-bootstrap'
-import { createHelpRequest } from "./HelpManager"
+import { updateHelpRequest,getSingleHelpRequest } from "./HelpManager"
 import { getUsersProjects} from "../projects/ProjectsManager"
 
 
@@ -10,17 +10,21 @@ const initialState = {
    author: "", content: "", project: ""
 };
 
-export const HelpForm = () => {
+export const HelpUpdate = () => {
     const history = useHistory()
+    const requestId = useParams()
     const [newRequest, setNewRequest] = useState(initialState)
     const currentUser = parseInt(localStorage.getItem("currentUser"))
     const [projects, setProjects] = useState([])
     
     useEffect(() => { getUsersProjects().then(data => setProjects(data)) }, [])
-    useEffect(() => { }, [newRequest])
+    useEffect(() => {
+        getSingleHelpRequest(parseInt(requestId.currentRequest))
+            .then((data) => { setNewRequest(data) })
+    }, [])
 
 
-console.log(projects)
+console.log(parseInt(requestId.currentRequest))
     const inputHandler = (e) => {
         const { id, value } = e.target;
         setNewRequest({ ...newRequest, [id]: value })
@@ -32,12 +36,13 @@ console.log(projects)
         const { author, content, project } = newRequest
 
         const newRequestObj = {
+            id:requestId.currentRequest,
             author: currentUser,
             content,
             project,
         }
 
-        createHelpRequest(newRequestObj).then(() => history.push("/help"))
+        updateHelpRequest(newRequestObj).then(() => history.push("/help"))
     };
 
     return (
@@ -65,7 +70,7 @@ console.log(projects)
                                 Explain what you need help with, and include some type of contact information
                             </Form.Text>
                         </FormGroup>
-                        <Button variant="outline-success" onClick={handleOnSubmit}>Create</Button>
+                        <Button variant="success" onClick={handleOnSubmit}>Update</Button>
                     </Form>
                 </Container>
             </section>

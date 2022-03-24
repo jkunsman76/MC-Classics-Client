@@ -113,7 +113,7 @@ export const Register=()=> {
                     <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
                 </fieldset>
             </form>
-            <section className="link--register">
+            <section className="link--register" style={{color: "white"}}>
                 Already registered? <Link to="/login">Login</Link>
             </section>
         </main>

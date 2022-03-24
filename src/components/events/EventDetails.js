@@ -16,15 +16,15 @@ export const EventDetails = () => {
     }, [])
 
 
-    console.log(event)
+    console.log(currentEvent)
     const buttonLogic = () => {
         if (event.creator?.id === currentUser) {
-            return (<><Button variant="warning" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => history.push(`/events/${currentEvent}/update`)}>Edit Event</Button>
-                <Button variant="danger" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => deleteEvent(currentEvent).then(history.push('/events'))}>Delete</Button></>)
+            return (<><Button variant="outline-warning" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => history.push(`/events/${currentEvent}/update`)}>Edit Event</Button>
+                <Button variant="outline-danger" size="sm" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => deleteEvent(currentEvent).then(history.push('/events'))}>Delete</Button></>)
         } else return (
-            event.joined ? <Button variant="warning" onClick={() => {
+            event.joined ? <Button variant="outline-warning" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => {
                 leaveEvent(event.id).then(history.push('/events'))
-            }} >Leave Event</Button> : <Button variant="success" onClick={() => {
+            }} >Leave Event</Button> : <Button variant="outline-success" style={{ padding: "10px,5px", margin: "4px", textAlign: "center" }} onClick={() => {
                 joinEvent(event.id).then(history.push('/events'))
             }}>Join Event</Button>)
 

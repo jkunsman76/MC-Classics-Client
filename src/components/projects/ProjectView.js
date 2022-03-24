@@ -75,9 +75,9 @@ export const ProjectView = () => {
                             return (
                                 <Row sm key={`comment--${comment.id}`} className="comment">
                                     <Stack gap="2" style={{ padding: "0px" }}>
+                                        <Col style={{ display: 'flex', margin: "6px", justifyContent: 'space-between' }}>
                                         {comment.author.user?.username}: {comment.content}
-                                        <Col style={{ display: 'flex', margin: "6px", justifyContent: 'flex-end' }}>
-                                            {parseInt(currentUser) === comment.author?.id ? <Button variant="outline-danger" size="small" onClick={() => deleteComment(comment.id).then(getAll)}>Remove</Button> : <div></div>}
+                                            {parseInt(currentUser) === comment.author?.id ? <Button variant="outline-danger"style={{ maxHeight: '2.5rem' }} size="small" onClick={() => deleteComment(comment.id).then(getAll)}>Remove</Button> : <div></div>}
                                         </Col>
                                     </Stack>
                                 </Row>
@@ -85,9 +85,9 @@ export const ProjectView = () => {
                         })}
                     </Row>
                     <Row>
-                        <Container style={{ display: 'flex' }}>
-                            <textarea id="content" type="text" value={newComment.content} onChange={inputHandler} required placeholder="add comment" />
-                            <Button size="small" style={{ justifyContent: 'flex-end', marginLeft: "6px" }} onClick={postSubmit}>Post</Button>
+                        <Container fluid style={{ display: 'flex',justifyContent: 'space-between',marginBottom:"2.5rem" }}>
+                            <textarea id="content" type="text" style={{  marginLeft: "6px", width:"25rem",minHeight:"6rem" }} value={newComment.content} onChange={inputHandler} required placeholder="add comment" />
+                            <Button variant='outline-primary' size="small" style={{ alignItems: 'end', marginLeft: "6px",maxHeight: '2.5rem' }} onClick={postSubmit}>Post</Button>
                         </Container>
                     </Row>
                 </Container>

@@ -24,6 +24,7 @@ export const ProjectsUpdate = () => {
     const [uploadedPhotos, setUploadedPhotos] = useState({})
 
     console.log(parseInt(projectId.currentProject))
+    console.log(projectId)
 
     useEffect(() => {
         getSingleProject(parseInt(projectId.currentProject))
