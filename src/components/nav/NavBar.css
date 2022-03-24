@@ -9,7 +9,7 @@
     top: 0;
     z-index: 999;
   }
-  
+
   .navbar-container {
     display: flex;
     justify-content: center;
@@ -36,25 +36,28 @@
   
   .nav-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto);
     grid-gap: 10px;
     list-style: none;
     text-align: center;
     width: 60vw;
-    justify-content: end;
     margin-right: 2rem;
+   
   }
   
   .nav-item {
     height: 80px;
+ 
   }
   
   .nav-links {
     color: #fff;
+    background-color:#282c34;
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
+    border:none;
     height: 100%;
   }
   
@@ -104,8 +107,9 @@
     .nav-links {
       text-align: center;
       padding: 2rem;
-      width: 100%;
+      width: 80%;
       display: table;
+      border:none;
     }
   
     .nav-links:hover {
@@ -156,4 +160,5 @@
       color: #242424;
       transition: 250ms;
     }
+
   }

@@ -26,56 +26,58 @@ export const EventForm = () => {
     const handleOnSubmit = (e) => {
         e.preventDefault();
 
-        const { date, description,type } = newEvent
+        const { date, description, type } = newEvent
 
         const newEventObj = {
-            date:eventDate,
+            date: eventDate,
             description,
             type,
         }
-        
+
         createEvent(newEventObj).then(() => history.push("/events"))
     };
 
     return (
         <>
-            <Container>
-                <Form>
-                    <FormGroup >
-                        <Form.Label>Type Of Event</Form.Label>
-                        <Form.Control id="type" type="text" defaultValue={newEvent.type} onChange={inputHandler} required placeholder="Swap Meet" />
-                        <Form.Text className="text-muted">
-                            This is the "Type" of event: Show and Shine, Swap Meet, WorkShop
-                        </Form.Text>
-                    </FormGroup>
-                    <FormGroup>
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control id="description" type="text" defaultValue={newEvent.description} onChange={inputHandler} required placeholder="The event takes places at the fairgrounds bring your cooler and parts!" />
-                        <Form.Text className="text-muted">
-                            What are the details?
-                        </Form.Text>
-                    </FormGroup>
-                    <FormGroup>
-                        <DatePicker 
-                            selected={eventDate}
-                            onChange={(date) => setEventDate(date)}
-                            id="date"
-                            name="eventDate"
-                            dateFormat="MMMM d, yyyy h:mm aa"
-                            minDate={new Date()}
-                            maxDate={addDays(new Date(), 365)}
-                            showTimeSelect
-                            timeFormat="HH:mm"
-                            timeIntervals={20}
-                            timeCaption="time"
-                        />
-                             <Form.Text className="text-muted">
-                            Select the Date and Time of the event
-                        </Form.Text>
-                    </FormGroup>
-                    <Button variant="success" onClick={handleOnSubmit}>Create Event</Button>
-                </Form>
-            </Container>
+            <section style={{ background: "#282c34", color: "#fff" }}>
+                <Container>
+                    <Form>
+                        <FormGroup >
+                            <Form.Label>Type Of Event</Form.Label>
+                            <Form.Control id="type" type="text" defaultValue={newEvent.type} onChange={inputHandler} required placeholder="Swap Meet" />
+                            <Form.Text className="text-muted">
+                                This is the "Type" of event: Show and Shine, Swap Meet, WorkShop
+                            </Form.Text>
+                        </FormGroup>
+                        <FormGroup>
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control id="description" type="text" defaultValue={newEvent.description} onChange={inputHandler} required placeholder="The event takes places at the fairgrounds bring your cooler and parts!" />
+                            <Form.Text className="text-muted">
+                                What are the details?
+                            </Form.Text>
+                        </FormGroup>
+                        <FormGroup>
+                            <DatePicker
+                                selected={eventDate}
+                                onChange={(date) => setEventDate(date)}
+                                id="date"
+                                name="eventDate"
+                                dateFormat="MMMM d, yyyy h:mm aa"
+                                minDate={new Date()}
+                                maxDate={addDays(new Date(), 365)}
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={20}
+                                timeCaption="time"
+                            />
+                            <Form.Text className="text-muted">
+                                Select the Date and Time of the event
+                            </Form.Text>
+                        </FormGroup>
+                        <Button variant="outline-success" onClick={handleOnSubmit}>Create Event</Button>
+                    </Form>
+                </Container>
+            </section>
         </>
     )
 }

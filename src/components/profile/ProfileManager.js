@@ -1,6 +1,6 @@
 export const getAllProfiles = () => {
     return fetch("http://localhost:8000/profiles", {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("mc_token")}`
         }
     })
@@ -8,8 +8,8 @@ export const getAllProfiles = () => {
 }
 
 export const getCurrentProfile = () => {
-    return fetch(`http://localhost:8000/profiles/currentuser`,{
-        headers:{
+    return fetch(`http://localhost:8000/profiles/currentuser`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("mc_token")}`
         }
     })
@@ -17,22 +17,22 @@ export const getCurrentProfile = () => {
 }
 
 export const updateProfile = (profile) => {
-    return fetch(`http://localhost:8000/profiles/${profile.id}`, {        
+    return fetch(`http://localhost:8000/profiles/${profile.id}`, {
         method: "PUT",
-        headers:{
-        "Authorization": `Token ${localStorage.getItem("mc_token")}`,
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(profile)
-})       
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("mc_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(profile)
+    })
 }
 
 export const deleteProfile = (profile_id) => {
-    return fetch(`http://localhost:8000/profiles/${profile_id}`, {        
+    return fetch(`http://localhost:8000/profiles/${profile_id}`, {
         method: "Delete",
-        headers:{
-        "Authorization": `Token ${localStorage.getItem("mc_token")}`,
-        "Content-Type": "application/json"
-    },
-})   
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("mc_token")}`,
+            "Content-Type": "application/json"
+        },
+    })
 }
